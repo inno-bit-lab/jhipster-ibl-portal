@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (ruolo) {
+      <div>
+        <h2 data-cy="ruoloDetailsHeading"><span jhiTranslate="iblPortalApp.ruolo.detail.title">Ruolo</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="iblPortalApp.ruolo.id">Id</span></dt>
+          <dd>
+            <span>{{ ruolo.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="iblPortalApp.ruolo.created">Created</span></dt>
+          <dd>
+            <span>{{ ruolo.created | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="iblPortalApp.ruolo.modified">Modified</span></dt>
+          <dd>
+            <span>{{ ruolo.modified | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="iblPortalApp.ruolo.nomeAzione">Nome Azione</span></dt>
+          <dd>
+            <span>{{ ruolo.nomeAzione }}</span>
+          </dd>
+          <dt><span jhiTranslate="iblPortalApp.ruolo.azioni">Azioni</span></dt>
+          <dd>
+            @if (ruolo.azioni) {
+              <div>
+                <a [routerLink]="['/azione', ruolo.azioni.id, 'view']">{{ ruolo.azioni.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Indietro</span>
+        </button>
+
+        <button type="button" [routerLink]="['/ruolo', ruolo.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Modifica</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

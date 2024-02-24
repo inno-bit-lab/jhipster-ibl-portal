@@ -1,0 +1,246 @@
+<div>
+  <h2 id="page-heading" data-cy="UtenteHeading">
+    <span jhiTranslate="iblPortalApp.utente.home.title">Utentes</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="iblPortalApp.utente.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-utente"
+        [routerLink]="['/utente/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span class="hidden-sm-down" jhiTranslate="iblPortalApp.utente.home.createLabel">Genera un nuovo Utente</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <form name="searchForm" class="row row-cols-sm-auto align-items-center">
+    <div class="col-sm-12">
+      <div class="input-group w-100 mt-3">
+        <label class="visually-hidden" for="currentSearch" jhiTranslate="iblPortalApp.utente.home.search">Cerca Utente</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="currentSearch"
+          id="currentSearch"
+          name="currentSearch"
+          placeholder="{{ 'iblPortalApp.utente.home.search' | translate }}"
+        />
+
+        <button class="btn btn-info" (click)="search(currentSearch)">
+          <fa-icon icon="search"></fa-icon>
+        </button>
+
+        @if (currentSearch) {
+          <button class="btn btn-danger" (click)="search('')">
+            <fa-icon icon="trash-alt"></fa-icon>
+          </button>
+        }
+      </div>
+    </div>
+  </form>
+
+  @if (utentes?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="iblPortalApp.utente.home.notFound">No Utentes found</span>
+    </div>
+  }
+
+  @if (utentes && utentes.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="iblPortalApp.utente.id">Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="created">
+              <div class="d-flex">
+                <span jhiTranslate="iblPortalApp.utente.created">Created</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="modified">
+              <div class="d-flex">
+                <span jhiTranslate="iblPortalApp.utente.modified">Modified</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="username">
+              <div class="d-flex">
+                <span jhiTranslate="iblPortalApp.utente.username">Username</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="password">
+              <div class="d-flex">
+                <span jhiTranslate="iblPortalApp.utente.password">Password</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="mail">
+              <div class="d-flex">
+                <span jhiTranslate="iblPortalApp.utente.mail">Mail</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="mobile">
+              <div class="d-flex">
+                <span jhiTranslate="iblPortalApp.utente.mobile">Mobile</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="facebook">
+              <div class="d-flex">
+                <span jhiTranslate="iblPortalApp.utente.facebook">Facebook</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="google">
+              <div class="d-flex">
+                <span jhiTranslate="iblPortalApp.utente.google">Google</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="instangram">
+              <div class="d-flex">
+                <span jhiTranslate="iblPortalApp.utente.instangram">Instangram</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="provider">
+              <div class="d-flex">
+                <span jhiTranslate="iblPortalApp.utente.provider">Provider</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="attivo">
+              <div class="d-flex">
+                <span jhiTranslate="iblPortalApp.utente.attivo">Attivo</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="motivoBolocco">
+              <div class="d-flex">
+                <span jhiTranslate="iblPortalApp.utente.motivoBolocco">Motivo Bolocco</span>
+                @if (!currentSearch) {
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                }
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="dataBolocco">
+              <div class="d-flex">
+                <span jhiTranslate="iblPortalApp.utente.dataBolocco">Data Bolocco</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="registrationDate">
+              <div class="d-flex">
+                <span jhiTranslate="iblPortalApp.utente.registrationDate">Registration Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="lastAccess">
+              <div class="d-flex">
+                <span jhiTranslate="iblPortalApp.utente.lastAccess">Last Access</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="ruolo.id">
+              <div class="d-flex">
+                <span jhiTranslate="iblPortalApp.utente.ruolo">Ruolo</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (utente of utentes; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/utente', utente.id, 'view']">{{ utente.id }}</a>
+              </td>
+              <td>{{ utente.created | formatMediumDate }}</td>
+              <td>{{ utente.modified | formatMediumDate }}</td>
+              <td>{{ utente.username }}</td>
+              <td>{{ utente.password }}</td>
+              <td>{{ utente.mail }}</td>
+              <td>{{ utente.mobile }}</td>
+              <td>{{ utente.facebook }}</td>
+              <td>{{ utente.google }}</td>
+              <td>{{ utente.instangram }}</td>
+              <td>{{ utente.provider }}</td>
+              <td>{{ utente.attivo }}</td>
+              <td>{{ utente.motivoBolocco }}</td>
+              <td>{{ utente.dataBolocco | formatMediumDate }}</td>
+              <td>{{ utente.registrationDate | formatMediumDate }}</td>
+              <td>{{ utente.lastAccess | formatMediumDate }}</td>
+              <td>
+                @if (utente.ruolo) {
+                  <div>
+                    <a [routerLink]="['/ruolo', utente.ruolo.id, 'view']">{{ utente.ruolo.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/utente', utente.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Visualizza</span>
+                  </a>
+
+                  <a [routerLink]="['/utente', utente.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Modifica</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(utente)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Elimina</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

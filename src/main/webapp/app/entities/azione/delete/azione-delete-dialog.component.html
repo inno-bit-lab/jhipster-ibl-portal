@@ -1,0 +1,28 @@
+@if (azione) {
+  <form name="deleteForm" (ngSubmit)="confirmDelete(azione.id!)">
+    <div class="modal-header">
+      <h4 class="modal-title" data-cy="azioneDeleteDialogHeading" jhiTranslate="entity.delete.title">
+        Conferma operazione di cancellazione
+      </h4>
+
+      <button type="button" class="btn-close" data-dismiss="modal" aria-hidden="true" (click)="cancel()">&times;</button>
+    </div>
+
+    <div class="modal-body">
+      <jhi-alert-error></jhi-alert-error>
+      <p id="jhi-delete-azione-heading" jhiTranslate="iblPortalApp.azione.delete.question" [translateValues]="{ id: azione.id }">
+        Sei sicuro di volere eliminare Azione {{ azione.id }}?
+      </p>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
+        <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annulla</span>
+      </button>
+
+      <button id="jhi-confirm-delete-azione" data-cy="entityConfirmDeleteButton" type="submit" class="btn btn-danger">
+        <fa-icon icon="times"></fa-icon>&nbsp;<span jhiTranslate="entity.action.delete">Elimina</span>
+      </button>
+    </div>
+  </form>
+}

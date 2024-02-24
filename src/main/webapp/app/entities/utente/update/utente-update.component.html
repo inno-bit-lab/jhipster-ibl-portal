@@ -1,0 +1,201 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-utente-heading" data-cy="UtenteCreateUpdateHeading" jhiTranslate="iblPortalApp.utente.home.createOrEditLabel">
+        Genera o modifica un Utente
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="iblPortalApp.utente.id" for="field_id">Id</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="iblPortalApp.utente.created" for="field_created">Created</label>
+          <div class="input-group">
+            <input
+              id="field_created"
+              data-cy="created"
+              type="text"
+              class="form-control"
+              name="created"
+              ngbDatepicker
+              #createdDp="ngbDatepicker"
+              formControlName="created"
+            />
+            <button type="button" class="btn btn-secondary" (click)="createdDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="iblPortalApp.utente.modified" for="field_modified">Modified</label>
+          <div class="input-group">
+            <input
+              id="field_modified"
+              data-cy="modified"
+              type="text"
+              class="form-control"
+              name="modified"
+              ngbDatepicker
+              #modifiedDp="ngbDatepicker"
+              formControlName="modified"
+            />
+            <button type="button" class="btn btn-secondary" (click)="modifiedDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="iblPortalApp.utente.username" for="field_username">Username</label>
+          <input type="text" class="form-control" name="username" id="field_username" data-cy="username" formControlName="username" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="iblPortalApp.utente.password" for="field_password">Password</label>
+          <input type="text" class="form-control" name="password" id="field_password" data-cy="password" formControlName="password" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="iblPortalApp.utente.mail" for="field_mail">Mail</label>
+          <input type="text" class="form-control" name="mail" id="field_mail" data-cy="mail" formControlName="mail" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="iblPortalApp.utente.mobile" for="field_mobile">Mobile</label>
+          <input type="text" class="form-control" name="mobile" id="field_mobile" data-cy="mobile" formControlName="mobile" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="iblPortalApp.utente.facebook" for="field_facebook">Facebook</label>
+          <input type="text" class="form-control" name="facebook" id="field_facebook" data-cy="facebook" formControlName="facebook" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="iblPortalApp.utente.google" for="field_google">Google</label>
+          <input type="text" class="form-control" name="google" id="field_google" data-cy="google" formControlName="google" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="iblPortalApp.utente.instangram" for="field_instangram">Instangram</label>
+          <input
+            type="text"
+            class="form-control"
+            name="instangram"
+            id="field_instangram"
+            data-cy="instangram"
+            formControlName="instangram"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="iblPortalApp.utente.provider" for="field_provider">Provider</label>
+          <input type="text" class="form-control" name="provider" id="field_provider" data-cy="provider" formControlName="provider" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="iblPortalApp.utente.attivo" for="field_attivo">Attivo</label>
+          <input type="checkbox" class="form-check" name="attivo" id="field_attivo" data-cy="attivo" formControlName="attivo" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="iblPortalApp.utente.motivoBolocco" for="field_motivoBolocco">Motivo Bolocco</label>
+          <input
+            type="text"
+            class="form-control"
+            name="motivoBolocco"
+            id="field_motivoBolocco"
+            data-cy="motivoBolocco"
+            formControlName="motivoBolocco"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="iblPortalApp.utente.dataBolocco" for="field_dataBolocco">Data Bolocco</label>
+          <div class="input-group">
+            <input
+              id="field_dataBolocco"
+              data-cy="dataBolocco"
+              type="text"
+              class="form-control"
+              name="dataBolocco"
+              ngbDatepicker
+              #dataBoloccoDp="ngbDatepicker"
+              formControlName="dataBolocco"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dataBoloccoDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="iblPortalApp.utente.registrationDate" for="field_registrationDate"
+            >Registration Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_registrationDate"
+              data-cy="registrationDate"
+              type="text"
+              class="form-control"
+              name="registrationDate"
+              ngbDatepicker
+              #registrationDateDp="ngbDatepicker"
+              formControlName="registrationDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="registrationDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="iblPortalApp.utente.lastAccess" for="field_lastAccess">Last Access</label>
+          <div class="input-group">
+            <input
+              id="field_lastAccess"
+              data-cy="lastAccess"
+              type="text"
+              class="form-control"
+              name="lastAccess"
+              ngbDatepicker
+              #lastAccessDp="ngbDatepicker"
+              formControlName="lastAccess"
+            />
+            <button type="button" class="btn btn-secondary" (click)="lastAccessDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="iblPortalApp.utente.ruolo" for="field_ruolo">Ruolo</label>
+          <select class="form-control" id="field_ruolo" data-cy="ruolo" name="ruolo" formControlName="ruolo" [compareWith]="compareRuolo">
+            <option [ngValue]="null"></option>
+            @for (ruoloOption of ruolosSharedCollection; track $index) {
+              <option [ngValue]="ruoloOption">{{ ruoloOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annulla</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Salva</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

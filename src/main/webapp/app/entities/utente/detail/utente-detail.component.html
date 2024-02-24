@@ -1,0 +1,98 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (utente) {
+      <div>
+        <h2 data-cy="utenteDetailsHeading"><span jhiTranslate="iblPortalApp.utente.detail.title">Utente</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="iblPortalApp.utente.id">Id</span></dt>
+          <dd>
+            <span>{{ utente.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="iblPortalApp.utente.created">Created</span></dt>
+          <dd>
+            <span>{{ utente.created | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="iblPortalApp.utente.modified">Modified</span></dt>
+          <dd>
+            <span>{{ utente.modified | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="iblPortalApp.utente.username">Username</span></dt>
+          <dd>
+            <span>{{ utente.username }}</span>
+          </dd>
+          <dt><span jhiTranslate="iblPortalApp.utente.password">Password</span></dt>
+          <dd>
+            <span>{{ utente.password }}</span>
+          </dd>
+          <dt><span jhiTranslate="iblPortalApp.utente.mail">Mail</span></dt>
+          <dd>
+            <span>{{ utente.mail }}</span>
+          </dd>
+          <dt><span jhiTranslate="iblPortalApp.utente.mobile">Mobile</span></dt>
+          <dd>
+            <span>{{ utente.mobile }}</span>
+          </dd>
+          <dt><span jhiTranslate="iblPortalApp.utente.facebook">Facebook</span></dt>
+          <dd>
+            <span>{{ utente.facebook }}</span>
+          </dd>
+          <dt><span jhiTranslate="iblPortalApp.utente.google">Google</span></dt>
+          <dd>
+            <span>{{ utente.google }}</span>
+          </dd>
+          <dt><span jhiTranslate="iblPortalApp.utente.instangram">Instangram</span></dt>
+          <dd>
+            <span>{{ utente.instangram }}</span>
+          </dd>
+          <dt><span jhiTranslate="iblPortalApp.utente.provider">Provider</span></dt>
+          <dd>
+            <span>{{ utente.provider }}</span>
+          </dd>
+          <dt><span jhiTranslate="iblPortalApp.utente.attivo">Attivo</span></dt>
+          <dd>
+            <span>{{ utente.attivo }}</span>
+          </dd>
+          <dt><span jhiTranslate="iblPortalApp.utente.motivoBolocco">Motivo Bolocco</span></dt>
+          <dd>
+            <span>{{ utente.motivoBolocco }}</span>
+          </dd>
+          <dt><span jhiTranslate="iblPortalApp.utente.dataBolocco">Data Bolocco</span></dt>
+          <dd>
+            <span>{{ utente.dataBolocco | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="iblPortalApp.utente.registrationDate">Registration Date</span></dt>
+          <dd>
+            <span>{{ utente.registrationDate | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="iblPortalApp.utente.lastAccess">Last Access</span></dt>
+          <dd>
+            <span>{{ utente.lastAccess | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="iblPortalApp.utente.ruolo">Ruolo</span></dt>
+          <dd>
+            @if (utente.ruolo) {
+              <div>
+                <a [routerLink]="['/ruolo', utente.ruolo.id, 'view']">{{ utente.ruolo.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Indietro</span>
+        </button>
+
+        <button type="button" [routerLink]="['/utente', utente.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Modifica</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

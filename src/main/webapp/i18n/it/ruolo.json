@@ -1,0 +1,28 @@
+{
+  "iblPortalApp": {
+    "ruolo": {
+      "home": {
+        "title": "Ruolos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Genera un nuovo Ruolo",
+        "createOrEditLabel": "Genera o modifica un Ruolo",
+        "search": "Cerca Ruolo",
+        "notFound": "No Ruolos found"
+      },
+      "created": "&Egrave; stato generato un nuovo Ruolo con identificatore {{ param }}",
+      "updated": "&Egrave; stato aggiornato Ruolo identificato da {{ param }}",
+      "deleted": "&Egrave; stato eliminato Ruolo con identificatore {{ param }}",
+      "delete": {
+        "question": "Sei sicuro di volere eliminare Ruolo {{ id }}?"
+      },
+      "detail": {
+        "title": "Ruolo"
+      },
+      "id": "Id",
+      "created": "Created",
+      "modified": "Modified",
+      "nomeAzione": "Nome Azione",
+      "azioni": "Azioni"
+    }
+  }
+}

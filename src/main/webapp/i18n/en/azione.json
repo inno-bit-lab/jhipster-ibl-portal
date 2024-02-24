@@ -1,0 +1,29 @@
+{
+  "iblPortalApp": {
+    "azione": {
+      "home": {
+        "title": "Aziones",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Azione",
+        "createOrEditLabel": "Create or edit a Azione",
+        "search": "Search for Azione",
+        "notFound": "No Aziones found"
+      },
+      "created": "A new Azione is created with identifier {{ param }}",
+      "updated": "A Azione is updated with identifier {{ param }}",
+      "deleted": "A Azione is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Azione {{ id }}?"
+      },
+      "detail": {
+        "title": "Azione"
+      },
+      "id": "Id",
+      "created": "Created",
+      "modified": "Modified",
+      "nomeAzione": "Nome Azione",
+      "descrizione": "Descrizione",
+      "ruolo": "Ruolo"
+    }
+  }
+}
