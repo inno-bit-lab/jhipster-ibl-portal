@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (azione) {
+      <div>
+        <h2 data-cy="azioneDetailsHeading"><span jhiTranslate="iblPortalApp.azione.detail.title">Azione</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="iblPortalApp.azione.id">Id</span></dt>
+          <dd>
+            <span>{{ azione.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="iblPortalApp.azione.created">Created</span></dt>
+          <dd>
+            <span>{{ azione.created | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="iblPortalApp.azione.modified">Modified</span></dt>
+          <dd>
+            <span>{{ azione.modified | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="iblPortalApp.azione.nomeAzione">Nome Azione</span></dt>
+          <dd>
+            <span>{{ azione.nomeAzione }}</span>
+          </dd>
+          <dt><span jhiTranslate="iblPortalApp.azione.descrizione">Descrizione</span></dt>
+          <dd>
+            <span>{{ azione.descrizione }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Indietro</span>
+        </button>
+
+        <button type="button" [routerLink]="['/azione', azione.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Modifica</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

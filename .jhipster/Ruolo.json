@@ -1,0 +1,35 @@
+{
+  "annotations": {
+    "changelogDate": "20240224175951"
+  },
+  "applications": "*",
+  "entityTableName": "ruolo",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "created",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "modified",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "nomeAzione",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Ruolo",
+  "relationships": [
+    {
+      "otherEntityName": "azione",
+      "relationshipName": "azioni",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

@@ -1,0 +1,83 @@
+{
+  "annotations": {
+    "changelogDate": "20240224180051"
+  },
+  "applications": "*",
+  "entityTableName": "utente",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "created",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "modified",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "username",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "password",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "mail",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "mobile",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "facebook",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "google",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "instangram",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "provider",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "attivo",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "motivoBolocco",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dataBolocco",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "registrationDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "lastAccess",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "name": "Utente",
+  "relationships": [
+    {
+      "otherEntityName": "ruolo",
+      "relationshipName": "ruolo",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

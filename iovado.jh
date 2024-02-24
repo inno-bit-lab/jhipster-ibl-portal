@@ -1,0 +1,44 @@
+entity Azione {
+	id Long,
+    created LocalDate,
+    modified LocalDate,
+	nomeAzione String,
+    descrizione String
+}
+entity Ruolo {
+	id Long,
+    created LocalDate,
+    modified LocalDate,
+	nomeAzione String,
+	nomeAzione String,
+}
+
+entity Utente {
+	id Long,
+    created LocalDate,
+    modified LocalDate,
+	username String,
+	password String,
+	mail String,
+	mobile String,
+	facebook String,
+	google String,
+	instangram String,
+	provider String,
+	attivo Boolean,
+	motivoBolocco String,
+	dataBolocco LocalDate,
+	registrationDate LocalDate, 
+	lastAccess LocalDate
+}
+
+relationship OneToOne {
+  Utente{ruolo} to Ruolo
+}
+
+relationship OneToMany {
+	Azione to Ruolo{azioni}
+}
+
+service all with serviceImpl
+

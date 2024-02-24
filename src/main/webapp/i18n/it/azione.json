@@ -1,0 +1,29 @@
+{
+  "iblPortalApp": {
+    "azione": {
+      "home": {
+        "title": "Aziones",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Genera un nuovo Azione",
+        "createOrEditLabel": "Genera o modifica un Azione",
+        "search": "Cerca Azione",
+        "notFound": "No Aziones found"
+      },
+      "created": "&Egrave; stato generato un nuovo Azione con identificatore {{ param }}",
+      "updated": "&Egrave; stato aggiornato Azione identificato da {{ param }}",
+      "deleted": "&Egrave; stato eliminato Azione con identificatore {{ param }}",
+      "delete": {
+        "question": "Sei sicuro di volere eliminare Azione {{ id }}?"
+      },
+      "detail": {
+        "title": "Azione"
+      },
+      "id": "Id",
+      "created": "Created",
+      "modified": "Modified",
+      "nomeAzione": "Nome Azione",
+      "descrizione": "Descrizione",
+      "ruolo": "Ruolo"
+    }
+  }
+}

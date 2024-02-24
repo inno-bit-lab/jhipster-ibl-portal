@@ -1,0 +1,99 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-ruolo-heading" data-cy="RuoloCreateUpdateHeading" jhiTranslate="iblPortalApp.ruolo.home.createOrEditLabel">
+        Genera o modifica un Ruolo
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="iblPortalApp.ruolo.id" for="field_id">Id</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="iblPortalApp.ruolo.created" for="field_created">Created</label>
+          <div class="input-group">
+            <input
+              id="field_created"
+              data-cy="created"
+              type="text"
+              class="form-control"
+              name="created"
+              ngbDatepicker
+              #createdDp="ngbDatepicker"
+              formControlName="created"
+            />
+            <button type="button" class="btn btn-secondary" (click)="createdDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="iblPortalApp.ruolo.modified" for="field_modified">Modified</label>
+          <div class="input-group">
+            <input
+              id="field_modified"
+              data-cy="modified"
+              type="text"
+              class="form-control"
+              name="modified"
+              ngbDatepicker
+              #modifiedDp="ngbDatepicker"
+              formControlName="modified"
+            />
+            <button type="button" class="btn btn-secondary" (click)="modifiedDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="iblPortalApp.ruolo.nomeAzione" for="field_nomeAzione">Nome Azione</label>
+          <input
+            type="text"
+            class="form-control"
+            name="nomeAzione"
+            id="field_nomeAzione"
+            data-cy="nomeAzione"
+            formControlName="nomeAzione"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="iblPortalApp.ruolo.azioni" for="field_azioni">Azioni</label>
+          <select
+            class="form-control"
+            id="field_azioni"
+            data-cy="azioni"
+            name="azioni"
+            formControlName="azioni"
+            [compareWith]="compareAzione"
+          >
+            <option [ngValue]="null"></option>
+            @for (azioneOption of azionesSharedCollection; track $index) {
+              <option [ngValue]="azioneOption">{{ azioneOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annulla</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Salva</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

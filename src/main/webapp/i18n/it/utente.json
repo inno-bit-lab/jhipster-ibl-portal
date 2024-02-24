@@ -1,0 +1,40 @@
+{
+  "iblPortalApp": {
+    "utente": {
+      "home": {
+        "title": "Utentes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Genera un nuovo Utente",
+        "createOrEditLabel": "Genera o modifica un Utente",
+        "search": "Cerca Utente",
+        "notFound": "No Utentes found"
+      },
+      "created": "&Egrave; stato generato un nuovo Utente con identificatore {{ param }}",
+      "updated": "&Egrave; stato aggiornato Utente identificato da {{ param }}",
+      "deleted": "&Egrave; stato eliminato Utente con identificatore {{ param }}",
+      "delete": {
+        "question": "Sei sicuro di volere eliminare Utente {{ id }}?"
+      },
+      "detail": {
+        "title": "Utente"
+      },
+      "id": "Id",
+      "created": "Created",
+      "modified": "Modified",
+      "username": "Username",
+      "password": "Password",
+      "mail": "Mail",
+      "mobile": "Mobile",
+      "facebook": "Facebook",
+      "google": "Google",
+      "instangram": "Instangram",
+      "provider": "Provider",
+      "attivo": "Attivo",
+      "motivoBolocco": "Motivo Bolocco",
+      "dataBolocco": "Data Bolocco",
+      "registrationDate": "Registration Date",
+      "lastAccess": "Last Access",
+      "ruolo": "Ruolo"
+    }
+  }
+}
