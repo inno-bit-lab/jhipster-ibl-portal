@@ -1,0 +1,131 @@
+application {
+  config {
+    applicationType gateway,
+    baseName IBLPoortal,
+    packageName it.ibl.portal.gateway,
+    serviceDiscoveryType eureka,
+    authenticationType jwt,
+    clientFramework angular,
+    prodDatabaseType mongo,
+    cacheProvider hazelcast, // Gestione della cache distribuita
+    enableHibernateCache true, // Abilita la cache di Hibernate per migliorare le prestazioni delle query
+    buildTool maven, // Scegli il tuo strumento di build, può essere 'maven' o 'gradle'
+    testFrameworks [cucumber], // Specifica i framework di test da includere
+    enableSwaggerCodegen true, // Abilita la generazione del codice client API da Swagger
+    serverPort 8080, // Configura la porta del server
+    enableTranslation true, // Abilita il supporto per la localizzazione e l'internazionalizzazione
+    nativeLanguage it, // Imposta la lingua principale
+    languages [en, it]
+  }
+  entities *
+}
+
+application {
+  config {
+    baseName Customer,
+    applicationType microservice,
+    packageName it.ibl.service.customer,
+    serviceDiscoveryType eureka,
+    authenticationType jwt,
+    databaseType mongodb, // Modificato per specificare l'uso di MongoDB
+    prodDatabaseType mongodb, // Specifica MongoDB come DB di produzione
+    devDatabaseType mongodb, // Utilizza MongoDB anche per lo sviluppo
+    cacheProvider hazelcast,
+    enableHibernateCache false, // Disabilitato poiché non applicabile a MongoDB
+    buildTool maven,
+    testFrameworks [cucumber],
+    enableSwaggerCodegen true,
+    serverPort 8081,
+    clientPackageManager npm,
+    enableTranslation true,
+    nativeLanguage it,
+    languages [it, en]
+  }
+  entities Customer, Project
+}
+
+
+application {
+  config {
+    baseName Resources,
+    applicationType microservice,
+    packageName it.ibl.service.resources,
+    serviceDiscoveryType eureka,
+    authenticationType jwt,
+    databaseType mongodb, // Modificato per specificare l'uso di MongoDB
+    prodDatabaseType mongodb, // Specifica MongoDB come DB di produzione
+    devDatabaseType mongodb, // Utilizza MongoDB anche per lo sviluppo
+    cacheProvider hazelcast,
+    enableHibernateCache false, // Disabilitato poiché non applicabile a MongoDB
+    buildTool maven,
+    testFrameworks [cucumber],
+    enableSwaggerCodegen true,
+    serverPort 8082,
+    clientPackageManager npm,
+    enableTranslation true,
+    nativeLanguage it,
+    languages [it, en]
+  }
+  entities Resource, TimeSheet
+}
+
+entity Customer {
+  name String required,
+  description String required,
+  email String required,
+  phoneNumber String,
+  address String,
+  city String,
+  state String,
+  zip String,
+  country String,
+  website String
+}
+
+entity Project {
+  code String required,
+  description String,
+  startDate LocalDate,
+  endDate LocalDate
+  customerID Long required,
+  state State required, 
+}
+
+entity Resource {
+  firstName String required,
+  lastName String required,
+  email String required,
+  phone String required,
+  address String,
+  city String,
+  state String,
+  zip String,
+  country String
+}
+
+enum State {
+  DRAFT, SUBMITTED, APPROVED
+}
+
+entity TimeSheet {
+  date LocalDate required,
+  hoursWorked Integer required,
+  description String,
+  resourceID Long required,
+  projectID Long required,
+  state State required
+}
+
+relationship OneToMany {
+  Customer{projects} to Project{customer(firstName)},
+  Resource{timeSheets} to TimeSheet{resource(firstName)}
+}
+
+relationship ManyToMany {
+  Project{resources(firstName)} to TimeSheet{projects(code)}
+}
+
+microservice Customer, Project with Customer
+microservice Resource, TimeSheet with Resources
+
+
